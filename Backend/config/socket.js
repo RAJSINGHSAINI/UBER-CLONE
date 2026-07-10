@@ -8,12 +8,21 @@ let io = null
 export function initializeSocket(httpServer) {
     if (io) return io
 
+    const allowedOrigins = [
+        "http://localhost:5173",
+        process.env.CLIENT_URL
+    ];
+
     io = new Server(httpServer, {
-        cors: { origin: '*', methods: ['GET', 'POST'] }
-    })
+        cors: {
+            origin: allowedOrigins,
+            methods: ["GET", "POST"],
+            credentials: true
+        }
+    });
     io.on('connection', (socket) => {
         console.log('Socket connected:', socket.id)
-            // connection establishment
+        // connection establishment
         socket.on('join', async (data) => {
             const { userId, userType } = data;
             try {
@@ -29,7 +38,7 @@ export function initializeSocket(httpServer) {
                 console.error('Socket join failed:', error)
             }
         })
-            //  broadcasting live location
+        //  broadcasting live location
         socket.on('captain-live-location', async (payload) => {
             try {
                 const { rideId, location, captainId } = payload || {};
@@ -85,6 +94,6 @@ export function sendMessageToSocketId(socketId, message) {
         console.log("message send to ", socketId, message.event);
         return true
     }
-    console.log("message failed ",socketId);
+    console.log("message failed ", socketId);
     return false
 }
