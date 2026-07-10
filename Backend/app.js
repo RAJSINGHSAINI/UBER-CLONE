@@ -8,7 +8,13 @@ import { rideRouter } from './routes/ride.router.js';
 const app = express();
 
 
-app.use(cors())
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        process.env.CLIENT_URL
+    ],
+    credentials: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -20,5 +26,5 @@ app.get("/", (req, res) => {
 app.use('/users', userRouter)
 app.use('/captains', captainRouter)
 app.use('/maps', mapRouter)
-app.use('/rides',rideRouter)
+app.use('/rides', rideRouter)
 export default app
