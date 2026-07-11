@@ -819,6 +819,7 @@ const RidePanel = ({
                                         <div className="min-w-0 flex-1 space-y-2 text-sm">
                                             <p className=" font-medium">{ride?.pickup?.address}</p>
                                             <p className=" font-medium">{ride?.destination?.address}</p>
+                                            <p className='text-xs capitalize text-gray-500'> ride date: {new Date(ride?.createdAt).toLocaleDateString()}</p>
                                         </div>
                                     </div>
 
