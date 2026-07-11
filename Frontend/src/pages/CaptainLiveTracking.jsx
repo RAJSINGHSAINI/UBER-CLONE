@@ -404,7 +404,7 @@ const CaptainLiveTracking = () => {
 
                     <div className="text-right">
                         <p className="text-sm opacity-80">ETA</p>
-                        <h3 className="font-bold text-lg">{ETA}</h3>
+                        <h3 className="font-bold text-lg">{formatDuration(ETA)}</h3>
                     </div>
                 </div>
             </div>
