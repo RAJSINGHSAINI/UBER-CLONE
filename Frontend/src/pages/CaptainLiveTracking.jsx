@@ -25,7 +25,7 @@ const CaptainLiveTracking = () => {
 
     const [contactCooldown, setContactCooldown] = useState(0);
     const [isRequesting, setIsRequesting] = useState(false);
-
+    const [ETA, setETA] = useState('')
     const [contactNumber, setContactNumber] = useState('')
 
     const user = useMemo(() => acceptRideData?.user, [acceptRideData]);
@@ -404,7 +404,7 @@ const CaptainLiveTracking = () => {
 
                     <div className="text-right">
                         <p className="text-sm opacity-80">ETA</p>
-                        {/* <h3 className="font-bold text-lg">{ride?.eta}</h3> */}
+                        <h3 className="font-bold text-lg">{ETA}</h3>
                     </div>
                 </div>
             </div>
@@ -697,6 +697,7 @@ const CaptainLiveTracking = () => {
                         onClose={() => setIsSheetOpen(false)}
                         getCurrentLocation={getCurrentLocation}
                         ride={ride}
+                        setETA={setETA}
                     />
                 </div>
             </div>

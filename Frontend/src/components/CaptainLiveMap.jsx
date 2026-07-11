@@ -16,7 +16,8 @@ const CaptainLiveMap = ({
     destination,
     onClose,
     getCurrentLocation,
-    ride
+    ride,
+    setETA
 }) => {
     const mapRef = useRef(null);
     const [isLiveTracking, setIsLiveTracking] = useState(false);
@@ -70,7 +71,8 @@ const CaptainLiveMap = ({
             );
 
             if (res.data.success) {
-
+                setETA(res.data.duration)
+                
                 setCaptainRoute(
                     res.data.route.map(
                         point => [point[1], point[0]]
