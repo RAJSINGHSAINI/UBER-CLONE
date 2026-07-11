@@ -76,28 +76,6 @@ const MapView = ({ currentLocation, selectionMode, setSelectionMode, setPickup, 
         return null;
     }
 
-    function FitRoute({ route }) {
-
-        const map = useMap();
-
-        useEffect(() => {
-
-            if (route.length > 0) {
-
-                map.fitBounds(
-                    route,
-                    {
-                        padding: [50, 50]
-                    }
-                );
-
-            }
-
-        }, [route]);
-
-        return null;
-    }
-
     // function FlyToCurrentLocation({ currentLocation }) {
 
     //     const map = useMap();
@@ -196,8 +174,6 @@ const MapView = ({ currentLocation, selectionMode, setSelectionMode, setPickup, 
                                 weight={5}
                                 color="black"
                             />
-
-                            <FitRoute route={route} />
                         </>
                     )
                 }
